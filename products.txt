@@ -8,3 +8,7 @@ ada
 dada
 kjajda
 sdask
+sharisharishari
+ijichooo
+python -u "d:\python program.py\helloword\pos_system_project\cli-based-pos\main.py"
+python -u "d:\python program.py\helloword\pos_system_project\cli-based-pos\main.py"

@@ -4,7 +4,19 @@ from addproduct import addproduct
 
 
 def manage_products():
-    print("Managing Products")
+    try:
+        with open("products.txt", "r") as file:
+            products = file.readlines()
+            if not products:
+                print("No products available.")
+            else:
+                print("Product List:")
+                for index, product in enumerate(products, start=1):
+                    print(f"{index}. {product.strip()}")
+                print(f"\nTotal products: {len(products)}")
+    except FileNotFoundError:
+        print("products.txt not found.")
+
 def add_product():
     while True:
      productname=input("Enter Producr Name 0R -1 to exit: ")
@@ -15,7 +27,16 @@ def add_product():
         addproduct(productname) 
 
 def view_products():
-    print("Viewing Products")
+    try:
+        with open("products.txt", "r") as file:
+            products = file.readlines()
+            if not products:
+                print("No products found.")
+            else:
+                for index, product in enumerate(products, start=1):
+                    print(f"{index}. {product.strip()}")
+    except FileNotFoundError:
+        print("products.txt not found.")
 
 def update_or_delete_product():
     print("Update/Delete Product")
