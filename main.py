@@ -1,9 +1,18 @@
 
+from addproduct import addproduct
+
+
+
 def manage_products():
     print("Managing Products")
 def add_product():
-    print("Adding Product")
-
+    while True:
+     productname=input("Enter Producr Name 0R -1 to exit: ")
+   
+     if (productname=="-1"):
+      break
+     else:
+        addproduct(productname) 
 
 def view_products():
     print("Viewing Products")
