@@ -39,7 +39,47 @@ def view_products():
         print("products.txt not found.")
 
 def update_or_delete_product():
-    print("Update/Delete Product")
+    try:
+        with open("products.txt", "r") as file:
+            products = file.readlines()
+
+        if not products:
+            print("No products available to update or delete.")
+            return
+
+        print("\nProduct List:")
+        for index, product in enumerate(products, start=1):
+            print(f"{index}. {product.strip()}")
+
+        action = input("\nDo you want to (u)pdate or (d)elete a product? (u/d): ").lower()
+
+        if action not in ['u', 'd']:
+            print("Invalid choice.")
+            return
+
+        number = input("Enter the product number: ")
+
+        if not number.isdigit() or int(number) < 1 or int(number) > len(products):
+            print("Invalid product number.")
+            return
+
+        index = int(number) - 1
+
+        if action == 'u':
+            new_name = input("Enter the new product name: ")
+            products[index] = new_name + "\n"
+            print("Product updated successfully.")
+
+        elif action == 'd':
+            removed = products.pop(index)
+            print(f"Product '{removed.strip()}' deleted successfully.")
+
+        with open("products.txt", "w") as file:
+            file.writelines(products)
+
+    except FileNotFoundError:
+        print("products.txt not found.")
+
 
 def signin():
     print("In Sign in")
